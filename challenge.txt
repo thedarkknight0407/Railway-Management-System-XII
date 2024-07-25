@@ -1,0 +1,9 @@
+---> gui
+---> functions
+    ---> Login
+    ---> Book ticket
+    ---> Cancel a ticket
+    ---> Check Fares
+    ---> Get train data
+    ---> View live train data
+    ---> User data
