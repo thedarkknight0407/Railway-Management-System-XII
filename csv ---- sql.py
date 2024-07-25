@@ -4,10 +4,8 @@ pandaslib usage
 csv ----> sql database
 '''
 
-import pandas as pd
 import mysql.connector as mydb
-from sqlalchemy import create_engine, types
-from test import test4
+import user
 
 def db_create():
     #tabel creation
@@ -41,7 +39,7 @@ def table_users():
         print("Error in connecting to server!")
 
     try:
-        cursor.execute('''CREATE TABLE users (uid int UNIQUE auto_increment,last_name varchar(50),first_name varchar(50) NOT NULL,sex char(1) NOT NULL,email varchar(50) UNIQUE,contact int UNIQUE,PRIMARY KEY (uid))''')
+        cursor.execute('''CREATE TABLE users (uid int UNIQUE auto_increment,last_name varchar(50),first_name varchar(50) NOT NULL,sex char(1) NOT NULL,email varchar(50) UNIQUE,contact bigint UNIQUE,PRIMARY KEY (uid))''')
         cursor.close()
         conn.close()
     except:
@@ -50,13 +48,7 @@ def table_users():
 db_create()
 table_users()
 
-try:
-    engine = create_engine('mysql://root:12345@localhost/railway_management')
-    csvf = pd.read_csv("train_details.csv")
-    print("creating train data")
-    csvf.to_sql("train_data", con = engine, index=False)
-    print("creating train data completed!")
-except:
-    pass
-    print("initiate user")
-test4.user()
+
+print("Initiate User")
+
+user.user()
